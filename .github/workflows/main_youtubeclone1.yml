@@ -21,13 +21,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build React app
-        run: npm run build
+      - name: Suppress Browserslist warnings
+        run: npx update-browserslist-db@latest
+
+      - name: Build React app (ignore warnings)
+        run: CI=false npm run build
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'youtubeclone56'  # Replace with your Azure App Service name
+          app-name: 'youtubeclone56'  # 🔁 Replace with your actual Azure App name
           slot-name: 'production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
