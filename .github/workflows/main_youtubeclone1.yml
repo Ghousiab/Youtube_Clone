@@ -33,4 +33,4 @@ jobs:
           app-name: 'ghwebapp'  # 🔁 Replace with your actual Azure App name
           slot-name: 'production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: .
+          package: ./build
